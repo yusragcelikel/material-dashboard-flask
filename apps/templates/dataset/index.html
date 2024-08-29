@@ -1,0 +1,196 @@
+{% extends "layouts/base.html" %} {% block title %} Datasets {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h6 class="text-white text-capitalize ps-3">Dataset</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    ID
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Algorithm
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Number of Data
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Accuracy
+                  </th>
+                  <th
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    F1 Score
+                  </th>
+                  <th
+                    class="text-center text-uppercase text-primary text-sm font-weight-bolder"
+                  >
+                    <a href="{{ url_for('dataset_blueprint.create') }}"
+                      >Add New Data</a
+                    >
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dataset in datasets %}
+                <tr>
+                  <td
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    {{ dataset.id }}
+                  </td>
+                  <td
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    {{ dataset.algorithm }}
+                  </td>
+                  <td
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    {{ dataset.number_of_data }}
+                  </td>
+                  <td
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    {{ dataset.accuracy }}
+                  </td>
+                  <td
+                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    {{ dataset.f1_score }}
+                  </td>
+                  <td class="text-center">
+                    <a
+                      href="{{ url_for('dataset_blueprint.update', id=dataset.id) }}"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        height="16"
+                        width="16"
+                      >
+                        <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"
+                        />
+                      </svg>
+                    </a>
+                    <form
+                      action="{{ url_for('dataset_blueprint.delete', id=dataset.id) }}"
+                      method="post"
+                      style="display: inline"
+                      id="delete-form-{{ dataset.id }}"
+                      class="ps-2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                        height="16"
+                        width="16"
+                        style="cursor: pointer"
+                        onclick="document.getElementById('delete-form-{{ dataset.id }}').submit();"
+                      >
+                        <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                          d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"
+                        />
+                      </svg>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer py-4">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="copyright text-center text-sm text-muted text-lg-start">
+            ©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            , made with <i class="fa fa-heart"></i> by
+            <a
+              href="https://www.creative-tim.com"
+              class="font-weight-bold"
+              target="_blank"
+              >Creative Tim</a
+            >
+            for a better web.
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <ul
+            class="nav nav-footer justify-content-center justify-content-lg-end"
+          >
+            <li class="nav-item">
+              <a
+                href="https://www.creative-tim.com"
+                class="nav-link text-muted"
+                target="_blank"
+                >Creative Tim</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.creative-tim.com/presentation"
+                class="nav-link text-muted"
+                target="_blank"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.creative-tim.com/blog"
+                class="nav-link text-muted"
+                target="_blank"
+                >Blog</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://www.creative-tim.com/license"
+                class="nav-link pe-0 text-muted"
+                target="_blank"
+                >License</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
