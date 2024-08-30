@@ -55,5 +55,21 @@ gulp.task('minify:css', function() {
         .pipe(gulp.dest(paths.src.css))
 });
 
-// Default Task: Compile SCSS and minify the result
-gulp.task('default', gulp.series('scss', 'minify:css'));
+// Watch SCSS and HTML files for changes
+gulp.task('watch', function() {
+    gulp.watch(paths.src.scss + '/**/*.scss', gulp.series('scss', 'minify:css'));  // SCSS dosyalarını izler ve değişiklik olduğunda derler
+    gulp.watch('./**/*.html').on('change', browserSync.reload);  // HTML dosyalarını izler ve değişiklik olduğunda tarayıcıyı yeniler
+});
+
+// Serve task with BrowserSync
+gulp.task('serve', gulp.series('scss', 'minify:css', function() {
+    browserSync.init({
+        server: paths.src.base
+    });
+
+    gulp.watch(paths.src.scss + '/**/*.scss', gulp.series('scss', 'minify:css'));
+    gulp.watch('./**/*.html').on('change', browserSync.reload);
+}));
+
+// Default Task: Compile SCSS, minify the result, and watch for changes
+gulp.task('default', gulp.series('scss', 'minify:css', 'watch'));
