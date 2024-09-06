@@ -1,0 +1,162 @@
+{% extends "layouts/base.html" %} {% block title %} Customer Profile {% endblock
+%} {% block content %}
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="md-col-4 d-flex flex-wrap">
+      <div class="card my-4 w-100">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h6 class="text-white text-capitalize ps-3">
+              Customer Information
+            </h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <tr>
+                <th class="text-xs font-weight-bolder">Customer ID</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.CustomerID }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Name</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.Name }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Surname</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.Surname }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">KKB</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.KKB }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">M1</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.M1 }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">M2</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.M2 }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card my-4 w-100">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h6 class="text-white text-capitalize ps-3">Scores</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <tr>
+                <th class="text-xs font-weight-bolder">KKB</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.KKB }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">M1 Score</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.M1 }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">M2 Score</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.M2 }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="md-col-8">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h6 class="text-white text-capitalize ps-3">
+              Financial Information
+            </h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <tr>
+                <th class="text-xs font-weight-bolder">Balance</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Balance }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Debt</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Debt }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">CreditScore</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.CreditScore }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loans</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Loans }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Savings</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Savings }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Investments</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Investments }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Investments</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Investments }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Investments</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ financial_info.Investments }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
