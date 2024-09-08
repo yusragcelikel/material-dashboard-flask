@@ -3,6 +3,7 @@
 <div class="container-fluid py-4">
   <div class="row">
     <div class="md-col-4 d-flex flex-wrap">
+      <!-- Customer Information Card -->
       <div class="card my-4 w-100">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div
@@ -34,10 +35,20 @@
                   {{ customer.surname }}
                 </td>
               </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Phone</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.phone }}</td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Address</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.address }}</td>
+              </tr>
             </table>
           </div>
         </div>
       </div>
+
+       <!-- Scores Card -->
       <div class="card my-4 w-100">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div
@@ -73,6 +84,7 @@
       </div>
     </div>
     <div class="md-col-8">
+      <!-- Financial Information Card -->
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div
@@ -126,7 +138,44 @@
           </div>
         </div>
       </div>
+
+      <!-- Score Chart -->
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">Score Chart</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <canvas id="scoreChart"></canvas>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctx = document.getElementById('scoreChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec'],  // months
+      datasets: [{
+        label: 'Credit Score Over Time',
+        data: [{{ financial_info.credit_score }}],  // Replace with actual data
+        borderColor: 'rgba(75, 192, 192, 1)',
+        fill: false
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 1000  // Assuming scores range from 0 to 1000
+        }
+      }
+    }
+  });
+</script>
 {% endblock content %}

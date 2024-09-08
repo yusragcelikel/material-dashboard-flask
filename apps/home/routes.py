@@ -13,7 +13,7 @@
 # home/routes.py
 
 from apps.home import blueprint
-from flask import redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for, jsonify
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 from apps.home.models import Customer, FinancialInformation
@@ -51,6 +51,25 @@ def customer_profile(customer_id):
 
     return render_template('customers/customer_profile.html', customer=customer, financial_info=financial_info)
 
+@blueprint.route('/api/customer_scores', methods=['GET'])
+def api_customer_scores():
+    # Tüm müşterileri sorgulama
+    customers = Customer.query.all()
+    
+    # Müşteri skorlarını ve etiketlerini saklamak için listeler
+    labels = []
+    scores = []
+
+    # Her müşteri için verileri listeye ekleyin
+    for customer in customers:
+        labels.append(f"{customer.name} {customer.surname}")
+        scores.append(customer.kkb)  # KKB skorlarını kullanıyoruz
+
+    # JSON formatında veri döndürme
+    return jsonify({
+        'labels': labels,
+        'scores': scores
+    })
 
 @blueprint.route('/<template>')
 @login_required
