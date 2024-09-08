@@ -22,6 +22,3 @@ VALUES
 (2, 'Germany', 'Germany', FALSE, FALSE, 'Business', 'Medium', 3000.00, 1, 15000.00, 2, 25000.00, 1, 'Germany', 'Germany', 'Germany', 3, 'Female', 'Single', 'Master', 'Data Scientist', 34, 1000.00, FALSE, TRUE, FALSE, 'Car Purchase', 'Berlin', 1, 'February', 65.00, 'Freelance', 0.4, FALSE, 7, 3, 'Consultant', 10000.00, 60000.00, 15000.00, 30000.00, FALSE, TRUE, 70),
 (3, 'UK', 'UK', TRUE, TRUE, 'Investment', 'High', 8000.00, 3, 12000.00, 1, 30000.00, 2, 'UK', 'UK', 'UK', 5, 'Male', 'Married', 'PhD', 'Consultant', 46, 3000.00, TRUE, TRUE, TRUE, 'Personal Expenses', 'London', 4, 'March', 80.00, 'Business', 0.6, TRUE, 15, 10, 'CEO', 20000.00, 100000.00, 50000.00, 40000.00, FALSE, TRUE, 90);
 
-ALTER TABLE customers
-ADD COLUMN phone VARCHAR(15),
-ADD COLUMN address VARCHAR(255);

@@ -8,8 +8,6 @@ class Customer(db.Model):
     customer_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     surname = db.Column(db.String(64), nullable=False)
-    phone = db.Column(db.String(20))  # Telefon eklendi
-    address = db.Column(db.String(128))  # Adres eklendi
     kkb = db.Column(db.Integer, nullable=False)
     m1 = db.Column(db.Integer, nullable=False)
     m2 = db.Column(db.Integer, nullable=False)
