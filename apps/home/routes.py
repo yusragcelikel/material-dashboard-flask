@@ -1,26 +1,14 @@
-#customers = [
-#    {"CustomerID": 1, "Name": "John", "Surname": "Doe", "KKB": 700, "M1": 50, "M2": 30},
-#    {"CustomerID": 2, "Name": "Jane", "Surname": "Smith", "KKB": 650, "M1": 45, "M2": 35},
-#    {"CustomerID": 3, "Name": "Alice", "Surname": "Brown", "KKB": 780, "M1": 60, "M2": 40},
-#]
-
-#financial_information = [
-#    {"CustomerID": 1, "Balance": 1000, "Debt": 500, "CreditScore": 700, "Loans": 2, "Savings": 15000, "Investments": 3000},
-#    {"CustomerID": 2, "Balance": 1500, "Debt": 300, "CreditScore": 650, "Loans": 1, "Savings": 12000, "Investments": 2000},
-#    {"CustomerID": 3, "Balance": 2000, "Debt": 1000, "CreditScore": 780, "Loans": 3, "Savings": 20000, "Investments": 5000},
-#]
-
 # home/routes.py
 
 from apps.home import blueprint
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-from apps.home.models import Customer, FinancialInformation
+from apps.home.models import Customer, CustomerLoan, CreditScore, Survey
 from apps import db
 
 @blueprint.route('/customers', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search', '').lower()
@@ -33,23 +21,32 @@ def index():
         customers = Customer.query.filter(
             db.or_(
                 Customer.customer_id.ilike(f'%{search_query}%'),
-                Customer.name.ilike(f'%{search_query}%'),
-                Customer.surname.ilike(f'%{search_query}%')
+                Customer.full_name.ilike(f'%{search_query}%')
             )
         ).all()
     else:
         customers = Customer.query.all()
 
-    return render_template('customers/index.html', customers=customers, segment='index')
+    # Fetch credit scores for the filtered customers
+    customer_ids = [customer.customer_id for customer in customers]
+    credit_scores = CreditScore.query.filter(CreditScore.customer_id.in_(customer_ids)).all()
+
+    # Create a dictionary mapping customer_id to credit_score
+    credit_scores_dict = {score.customer_id: score.credit_score for score in credit_scores}
+
+    return render_template('customers/index.html', customers=customers, credit_score=credit_scores_dict, segment='index')
+
 
 @blueprint.route('/customers/<int:customer_id>')
-#@login_required
+@login_required
 def customer_profile(customer_id):
     # Query the database to find the customer and their financial information
     customer = Customer.query.get_or_404(customer_id)
-    financial_info = FinancialInformation.query.filter_by(customer_id=customer.customer_id).first()
+    survey = Survey.query.filter_by(customer_id=customer.customer_id).first()
+    customer_loan = CustomerLoan.query.filter_by(customer_id=customer.customer_id).first()
+    credit_score = CreditScore.query.filter_by(customer_id=customer.customer_id).first()
 
-    return render_template('customers/customer_profile.html', customer=customer, financial_info=financial_info)
+    return render_template('customers/customer_profile.html', customer=customer, survey=survey, customer_loan=customer_loan, credit_score=credit_score)
 
 
 @blueprint.route('/<template>')

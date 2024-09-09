@@ -16,7 +16,7 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
+            <table class="customer-details-table table align-items-center mb-0">
               <thead>
                 <tr>
                   <th
@@ -32,22 +32,7 @@
                   <th
                     class="text-uppercase text-secondary text-xxs font-weight-bolder"
                   >
-                    Surname
-                  </th>
-                  <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder"
-                  >
-                    KKB
-                  </th>
-                  <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder"
-                  >
-                    M1
-                  </th>
-                  <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder"
-                  >
-                    M2
+                    Credit Score
                   </th>
                   <th></th>
                 </tr>
@@ -63,27 +48,12 @@
                   <td
                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                   >
-                    {{ customer.name }}
+                    {{ customer.full_name }}
                   </td>
                   <td
                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                   >
-                    {{ customer.surname }}
-                  </td>
-                  <td
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                  >
-                    {{ customer.kkb }}
-                  </td>
-                  <td
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                  >
-                    {{ customer.m1 }}
-                  </td>
-                  <td
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                  >
-                    {{ customer.m2 }}
+                    {{ credit_score[customer.customer_id] }}
                   </td>
                   <td>
                     <a href="/customers/{{ customer.customer_id }}">
