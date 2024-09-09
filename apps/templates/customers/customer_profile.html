@@ -2,6 +2,7 @@
 %} {% block content %}
 <div class="container-fluid py-4">
   <div class="row">
+    <!-- Müşteri Bilgileri Kısmı -->
     <div class="md-col-4 d-flex flex-wrap">
       <div class="card my-4 w-100">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -34,6 +35,11 @@
                   {{ customer.surname }}
                 </td>
               </tr>
+              <tr><th class="text-xs font-weight-bolder">Country of Residence</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.country_of_residence }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Citizenship</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.citizenship }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Is Politician</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.is_politician }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Has Political Affiliation</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ customer.has_political_affiliation }}</td></tr>
+              <!-- Diğer bilgileri burada ekleyin -->
             </table>
           </div>
         </div>
@@ -72,6 +78,8 @@
         </div>
       </div>
     </div>
+    
+    <!-- Finansal Bilgiler Kısmı -->
     <div class="md-col-8">
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -122,6 +130,11 @@
                   {{ financial_info.investments }}
                 </td>
               </tr>
+              <tr><th class="text-xs font-weight-bolder">Loan Purpose</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ financial_info.loan_purpose }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Loan Branch</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ financial_info.loan_branch }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Number of Loans</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ financial_info.number_of_loans }}</td></tr>
+              <tr><th class="text-xs font-weight-bolder">Loan Month</th><td class="text-secondary text-sm font-weight-bolder opacity-7">{{ financial_info.loan_month }}</td></tr>
+              <!-- Diğer bilgileri burada ekleyin -->
             </table>
           </div>
         </div>
