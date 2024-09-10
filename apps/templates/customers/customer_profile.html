@@ -2,8 +2,9 @@
 %} {% block content %}
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="md-col-4 d-flex flex-wrap">
-      <div class="card my-4 w-100">
+    <!-- Customer Information -->
+    <div class="md-col-4">
+      <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div
             class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
@@ -15,7 +16,9 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
+            <table
+              class="customer-information-table customer-details-table table align-items-center mb-0"
+            >
               <tr>
                 <th class="text-xs font-weight-bolder">Customer ID</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
@@ -23,48 +26,224 @@
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Name</th>
+                <th class="text-xs font-weight-bolder">Full Name</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ customer.name }}
+                  {{ customer.full_name }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Surname</th>
+                <th class="text-xs font-weight-bolder">Country of Residence</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ customer.surname }}
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="card my-4 w-100">
-        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-          <div
-            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
-          >
-            <h6 class="text-white text-capitalize ps-3">Scores</h6>
-          </div>
-        </div>
-        <div class="card-body px-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <tr>
-                <th class="text-xs font-weight-bolder">KKB</th>
-                <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ customer.kkb }}
+                  {{ survey.country_of_residence if survey else customer.city }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">M1 Score</th>
+                <th class="text-xs font-weight-bolder">Citizenship</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ customer.m1 }}
+                  {{ survey.citizenship if survey else customer.citizenship }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">M2 Score</th>
+                <th class="text-xs font-weight-bolder">Is Politician</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ customer.m2 }}
+                  {{ survey.is_politician if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Has Political Affiliation
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.has_political_affiliation if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Account Purpose</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.account_purpose if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Annual Account Activity Range
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.annual_account_activity_range if survey else 'N/A'
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Current Account Local Currency Balance
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.current_account_local_currency_balance if survey
+                  else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Number of Current Accounts
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.number_of_current_accounts if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Savings Account Local Currency Balance
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.savings_account_local_currency_balance if survey
+                  else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Number of Savings Accounts
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.number_of_savings_accounts if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Investment Account Local Currency Balance
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.investment_account_local_currency_balance if survey
+                  else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Number of Investment Accounts
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.number_of_investment_accounts if survey else 'N/A'
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Authorized Signatory Country of Residence
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.authorized_signatory_country_of_residence if survey
+                  else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Authorized Signatory Citizenship
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.authorized_signatory_citizenship if survey else
+                  'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Company Partner Citizenship
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.company_partner_citizenship if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Number of Family Members
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.number_of_family_members if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Gender</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.gender if survey else customer.gender }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Marital Status</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.marital_status if survey else
+                  customer.marital_status }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Education Level</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.education_level if survey else
+                  customer.education_level }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Occupation</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.occupation if survey else customer.occupation }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Age</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.age if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Additional Income</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.additional_income if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Has Collateral</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.has_collateral if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Owns Valuable Items</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.owns_valuable_items if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Owns Real Estate</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.owns_real_estate if survey else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Job Position</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.job_position if survey else customer.occupation }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Place of Birth</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.place_of_birth }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Date of Birth</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.date_of_birth }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Customer Registration Date
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.customer_registration_date }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">City</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer.city }}
                 </td>
               </tr>
             </table>
@@ -72,8 +251,10 @@
         </div>
       </div>
     </div>
+
+    <!-- Financial Information -->
     <div class="md-col-8">
-      <div class="card my-4">
+      <div class="card my-4 w-100">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div
             class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
@@ -85,41 +266,255 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
+            <table
+              class="customer-financial-table customer-details-table table align-items-center mb-0"
+            >
               <tr>
-                <th class="text-xs font-weight-bolder">Balance</th>
+                <th class="text-xs font-weight-bolder">Loan Purpose</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.balance }}
+                  {{ survey.loan_purpose }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Debt</th>
+                <th class="text-xs font-weight-bolder">Loan Branch</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.debt }}
+                  {{ survey.loan_branch }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">CreditScore</th>
+                <th class="text-xs font-weight-bolder">Number of Loans</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.credit_score }}
+                  {{ survey.number_of_loans }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Loans</th>
+                <th class="text-xs font-weight-bolder">Loan Month</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.loans }}
+                  {{ survey.loan_month }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Savings</th>
+                <th class="text-xs font-weight-bolder">
+                  Primary Income Percentage
+                </th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.savings }}
+                  {{ survey.primary_income_percentage }}
                 </td>
               </tr>
               <tr>
-                <th class="text-xs font-weight-bolder">Investments</th>
+                <th class="text-xs font-weight-bolder">Income Type</th>
                 <td class="text-secondary text-sm font-weight-bolder opacity-7">
-                  {{ financial_info.investments }}
+                  {{ survey.income_type }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Expense to Income Ratio
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.expense_to_income_ratio }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Negative Comment from Loan Department
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.negative_comment_from_loan_department }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Years of Employment</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.years_of_employment }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loan Type</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.loan_type }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Years in Same Residence
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.years_in_same_residence }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Movable Property Value (USD)
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.movable_property_value_in_usd }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Immovable Property Value Land (USD)
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.immovable_property_value_land_in_usd }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Second Property Value (USD)
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.second_property_value_in_usd }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Immovable Property Value House (USD)
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.immovable_property_value_house_in_usd }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Is Customer on Banned List
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.is_customer_on_banned_list }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Is Regular Customer</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.is_regular_customer }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Document ID</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.document_id }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Product Type</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.product_type }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loan Type</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.loan_type }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Currency Type</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.currency_type }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loan Start Date</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.loan_start_date }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loan End Date</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.loan_end_date }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Loan Status</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.loan_status }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Requested Amount</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.requested_amount }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Approved Amount</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.approved_amount }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Principal Debt</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.principal_debt }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Total Debt</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.total_debt }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Secondary Purpose Code
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.secondary_purpose_code }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Secondary Purpose Description
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.secondary_purpose_description }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Tertiary Purpose Code
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.tertiary_purpose_code }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">
+                  Tertiary Purpose Description
+                </th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ customer_loan.tertiary_purpose_description }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">Score</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ survey.total_score }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Credit Scores -->
+      <div class="card my-4 mt-5 w-100">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h6 class="text-white text-capitalize ps-3">Credit Score</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive p-0">
+            <table
+              class="customer-scores-table customer-details-table table align-items-center mb-0"
+            >
+              <tr>
+                <th class="text-xs font-weight-bolder">Credit Score</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ credit_score.credit_score }}
                 </td>
               </tr>
             </table>
@@ -129,4 +524,4 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock %}

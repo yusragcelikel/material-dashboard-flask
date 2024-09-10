@@ -878,9 +878,7 @@ progress {
 .offset-11 {
   margin-left: 91.66667%;
 }
-
-/* Medium screens (e.g., >= 768px) */
-@media (min-width: 768px) {
+@media (min-width: 1600px) {
   .md-col-1 {
     flex: 0 0 auto;
     width: 8.33333%;
@@ -991,12 +989,11 @@ progress {
 }
 
 .flex-wrap {
-  flex-wrap: "wrap"
-
+  flex-wrap: "wrap";
 }
 
-.flex-no-wrap{
-  flex-wrap: "nowrap"
+.flex-no-wrap {
+  flex-wrap: "nowrap";
 }
 
 .g-0,
@@ -2256,6 +2253,44 @@ progress {
   .g-xxl-12,
   .gy-xxl-12 {
     --bs-gutter-y: 16rem;
+  }
+}
+
+.customer-details-table > :not(caption) > * > * {
+  padding: 0.4rem 1.5rem !important;
+}
+
+.customer-financial-table > tbody,
+.customer-information-table > tbody {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.customer-financial-table > tbody > tr,
+.customer-scores-table > tbody > tr,
+.customer-information-table > tbody > tr {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) and (max-width: 1600px) {
+  .customer-information-table > tbody {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .customer-financial-table > tbody {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .customer-financial-table > tbody > tr {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
   }
 }
 
