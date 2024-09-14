@@ -46,8 +46,8 @@ def customer_profile(customer_id):
     customer_loan = CustomerLoan.query.filter_by(customer_id=customer.customer_id).first()
     credit_score = CreditScore.query.filter_by(customer_id=customer.customer_id).first()
     # Fetch additional attributes (m1 and m2) if they exist
-    m1 = getattr(customer, 'm1', 'N/A')
-    m2 = getattr(customer, 'm2', 'N/A')
+    m1 = getattr(credit_score, 'm1', 'N/A') if credit_score else 'N/A'
+    m2 = getattr(credit_score, 'm2', 'N/A') if credit_score else 'N/A'
 
     return render_template('customers/customer_profile.html', customer=customer, survey=survey, customer_loan=customer_loan, credit_score=credit_score, m1=m1, m2=m2)
 
