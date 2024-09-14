@@ -29,6 +29,8 @@ class CreditScore(db.Model):
     __tablename__ = 'credit_scores'
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_id'), nullable=False, primary_key=True)
     credit_score = db.Column(db.Integer, nullable=False)
+    m1 = db.Column(db.Numeric(10, 2), nullable=True)  # Add the new m1 column
+    m2 = db.Column(db.Numeric(10, 2), nullable=True)  # Add the new m2 column
 
 
 class CustomerLoan(db.Model):
