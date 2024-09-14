@@ -517,6 +517,18 @@
                   {{ credit_score.credit_score }}
                 </td>
               </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">m1</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ credit_scores[customer.customer_id].m1 if customer.customer_id in credit_scores else 'N/A' }}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-xs font-weight-bolder">m2</th>
+                <td class="text-secondary text-sm font-weight-bolder opacity-7">
+                  {{ credit_scores[customer.customer_id].m2 if customer.customer_id in credit_scores else 'N/A' }}
+                </td>
+              </tr>
             </table>
           </div>
         </div>
