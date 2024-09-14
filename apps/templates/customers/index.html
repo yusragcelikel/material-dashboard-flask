@@ -55,6 +55,12 @@
                   >
                     {{ credit_score[customer.customer_id] }}
                   </td>
+                  <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    {{ credit_scores[customer.customer_id].m1 }}
+                  </td> <!-- Display m1 -->
+                  <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    {{ credit_scores[customer.customer_id].m2 }}
+                  </td> <!-- Display m2 -->
                   <td>
                     <a href="/customers/{{ customer.customer_id }}">
                       <svg
